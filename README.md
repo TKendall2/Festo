@@ -14,3 +14,8 @@ A 32gb microsd card is required to run the IOT2020 device
 Instructions on hardware and installing pre-requisite software is found in ----> pre-requistes and setup
 
 Instructions on the node-red flow programming code is found in ----> node-red flow
+
+
+
+For this project, we have used 2 50k potentioeters providing the input signals to UO and U1 on the IOT2020 Shield
+
