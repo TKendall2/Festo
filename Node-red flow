@@ -1,0 +1,729 @@
+In the node red window (IP address:1880), menu, import, from clipboard.
+Copy the following code: 
+
+[
+    {
+        "id": "2c81bf72.601ce",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "5ab7da54.397714",
+        "type": "sqlitedb",
+        "z": "",
+        "db": "/dbs/sqlite",
+        "mode": "RWC"
+    },
+    {
+        "id": "36528b60.84f614",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    },
+    {
+        "id": "6219bc15.61a4e4",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "800a09b7.23ea28",
+        "type": "sqlitedb",
+        "z": "",
+        "db": "/dbs/sqlite",
+        "mode": "RO"
+    },
+    {
+        "id": "80cc19b2.335a58",
+        "type": "ui_group",
+        "z": "",
+        "name": "Buttons",
+        "tab": "bf39913c.e45ac",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "564a9555.c8beec",
+        "type": "ui_group",
+        "z": "",
+        "name": "UI Table",
+        "tab": "bf39913c.e45ac",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "3a6078da.f784a8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Black Group",
+        "tab": "ae261e14.933a8",
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "8de0d34.ead8d3",
+        "type": "ui_group",
+        "z": "",
+        "name": "Historical",
+        "tab": "ae261e14.933a8",
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bf39913c.e45ac",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Historical Data",
+        "icon": "dashboard"
+    },
+    {
+        "id": "ae261e14.933a8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Live Data",
+        "icon": "dashboard"
+    },
+    {
+        "id": "cf345741.801bd8",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "CREATE",
+        "topic": "CREATE TABLE nodered(id INTEGER PRIMARY KEY NOT NULL  , time  NUMERIC, seconds NUMERIC, voltage1 NUMERIC, voltage2 NUMERIC, status NUMERIC)",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 171,
+        "y": 40,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "241017e9.9b9d48",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "INSERT",
+        "topic": "INSERT INTO nodered values(25, 5, 8, 1)",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 172,
+        "y": 90,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "65d91051.f16a1",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "SELECT",
+        "topic": "SELECT * FROM nodered",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 170,
+        "y": 151,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "2db9e411.cb1bec",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "DELETE",
+        "topic": "DELETE from nodered",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 173,
+        "y": 204,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "bddb263.10ab2d8",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "DROP",
+        "topic": "DROP TABLE nodered",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 162,
+        "y": 256,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "bef099b9.fa2fb8",
+        "type": "sqlite",
+        "z": "2c81bf72.601ce",
+        "mydb": "5ab7da54.397714",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "sqlite",
+        "x": 745,
+        "y": 293,
+        "wires": [
+            [
+                "67ff2d96.526554"
+            ]
+        ]
+    },
+    {
+        "id": "67ff2d96.526554",
+        "type": "debug",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 1154,
+        "y": 294,
+        "wires": []
+    },
+    {
+        "id": "e55bb88a.319ac8",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "topic": "",
+        "payload": "8",
+        "payloadType": "num",
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "x": 127,
+        "y": 732,
+        "wires": [
+            [
+                "fed3107f.25472"
+            ]
+        ]
+    },
+    {
+        "id": "bea4727d.2d31b",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "msg2 global",
+        "func": "var v2 = (msg.payload*10/854);\nv2 = Number(v2.toFixed(2));\nvar msg2 = {topic: \"Voltage 2\", payload:v2};\nglobal.set('msg2', msg2.payload);\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540.3332977294922,
+        "y": 732.6667566299438,
+        "wires": [
+            [
+                "a937b463.5d5468",
+                "c348d16e.9ae9c"
+            ]
+        ]
+    },
+    {
+        "id": "5b2064f7.f65b8c",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "topic": "",
+        "payload": "2.5",
+        "payloadType": "num",
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "x": 127,
+        "y": 653,
+        "wires": [
+            [
+                "16ee356f.7ed2cb"
+            ]
+        ]
+    },
+    {
+        "id": "8d0e10e0.c3637",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "msg1 global",
+        "func": "var v1 = (msg.payload*10/856);\nv1 = Number(v1.toFixed(2));\nvar msg1 = {topic: \"Voltage 1\", payload:v1};\nglobal.set('msg1', msg1.payload);\nreturn msg1;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540.809513092041,
+        "y": 650.3335008621216,
+        "wires": [
+            [
+                "9c7f515a.d66ac",
+                "c348d16e.9ae9c"
+            ]
+        ]
+    },
+    {
+        "id": "b6a660.31b939a",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "x": 130,
+        "y": 346,
+        "wires": [
+            [
+                "2fa79074.d41a3"
+            ]
+        ]
+    },
+    {
+        "id": "804093ea.94b4d",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "insert data to sql",
+        "func": "var v1 = global.get('msg1')||{};\nvar v2 = global.get('msg2')||{};\nvar v3 = msg.time.hours;\nvar v3s = String(v3);\nvar v4 = msg.time.minutes;\nvar v4s = String(v4);\nvar v5 = msg.time.seconds;\nvar v6 = Date.now();\nvar stat = (1);\nvar v7 = v3s + \".\" + v4s;\nv7 = parseFloat(v7);\nmsg.payload = Number(v7.toFixed(2));\nvar newMsg = {\n    \"topic\": \"INSERT INTO nodered VALUES (\" + v6 + \", \" + msg.payload + \", \" + v5 + \", \" + v1 + \", \" + v2 + \", \" + stat + \")\"\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 529.3333320617676,
+        "y": 317.666690826416,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "bee5b776.6f9a48",
+        "type": "ui_form",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "label": "Input Time (HH.MM)",
+        "group": "80cc19b2.335a58",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Input",
+                "value": "time",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "time": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 144,
+        "y": 558,
+        "wires": [
+            [
+                "bd0ceb10.0461d8"
+            ]
+        ]
+    },
+    {
+        "id": "f6f4d985.d25998",
+        "type": "inject",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "x": 129,
+        "y": 392,
+        "wires": [
+            [
+                "72a97bae.e3f884"
+            ]
+        ]
+    },
+    {
+        "id": "72a97bae.e3f884",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "Delete 24 hours",
+        "func": "var newMsg = {\n    \"topic\": \"DELETE FROM nodered WHERE id <=\" + (msg.payload-86400000)  \n    };\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 531.0000228881836,
+        "y": 380.3333492279053,
+        "wires": [
+            [
+                "bef099b9.fa2fb8"
+            ]
+        ]
+    },
+    {
+        "id": "8bb4cfde.2932e",
+        "type": "sqlite",
+        "z": "2c81bf72.601ce",
+        "mydb": "800a09b7.23ea28",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "Read",
+        "x": 751,
+        "y": 420,
+        "wires": [
+            [
+                "929f8d6e.7c8b1",
+                "67ff2d96.526554"
+            ]
+        ]
+    },
+    {
+        "id": "a5396dc3.4d2db",
+        "type": "ui_button",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "group": "80cc19b2.335a58",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Show recent data",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "SELECT * FROM nodered ORDER BY id DESC LIMIT 100;",
+        "x": 445.27783966064453,
+        "y": 473.8889636993408,
+        "wires": [
+            [
+                "8bb4cfde.2932e"
+            ]
+        ]
+    },
+    {
+        "id": "9c7f515a.d66ac",
+        "type": "ui_gauge",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "group": "3a6078da.f784a8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Voltage 1",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 798.8095397949219,
+        "y": 622.3810691833496,
+        "wires": []
+    },
+    {
+        "id": "a937b463.5d5468",
+        "type": "ui_gauge",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "group": "3a6078da.f784a8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Voltage 2",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 802.1429138183594,
+        "y": 768.5715007781982,
+        "wires": []
+    },
+    {
+        "id": "7e8482a2.fc4dac",
+        "type": "ui_text",
+        "z": "2c81bf72.601ce",
+        "group": "80cc19b2.335a58",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Select data from last 24 hours (Above)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 199.04767608642578,
+        "y": 805.9523777961731,
+        "wires": []
+    },
+    {
+        "id": "80e806a8.6be6e8",
+        "type": "ui_text",
+        "z": "2c81bf72.601ce",
+        "group": "80cc19b2.335a58",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Show Most Recent Data (Below)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 176.19055938720703,
+        "y": 852.857084274292,
+        "wires": []
+    },
+    {
+        "id": "16ee356f.7ed2cb",
+        "type": "iot2000-io-ai",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "pin": "U0",
+        "x": 308.3333320617676,
+        "y": 651.6667518615723,
+        "wires": [
+            [
+                "8d0e10e0.c3637"
+            ]
+        ]
+    },
+    {
+        "id": "fed3107f.25472",
+        "type": "iot2000-io-ai",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "pin": "U1",
+        "x": 307.3333435058594,
+        "y": 732.333402633667,
+        "wires": [
+            [
+                "bea4727d.2d31b"
+            ]
+        ]
+    },
+    {
+        "id": "2fa79074.d41a3",
+        "type": "moment",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Etc/UTC",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "object",
+        "locale": "POSIX",
+        "output": "time",
+        "outputType": "msg",
+        "outTz": "ETC/GMT",
+        "x": 321.6666946411133,
+        "y": 321.66668033599854,
+        "wires": [
+            [
+                "804093ea.94b4d"
+            ]
+        ]
+    },
+    {
+        "id": "929f8d6e.7c8b1",
+        "type": "ui_template",
+        "z": "2c81bf72.601ce",
+        "group": "564a9555.c8beec",
+        "name": "Historical Data",
+        "order": 0,
+        "width": "12",
+        "height": "20",
+        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>Index</th>\n    <th>Time</th> \n    <th>Seconds</th>\n    <th>Voltage1</th>\n    <th>Voltage2</th>\n    <th>Status</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:60\">\n    <td>{{$index}}</td>\n    <td>{{msg.payload[$index].time}}</td> \n    <td>{{msg.payload[$index].seconds}}</td>\n    <td>{{msg.payload[$index].voltage1}}</td>\n    <td>{{msg.payload[$index].voltage2}}</td>\n    <td>{{msg.payload[$index].status}}</td>\n  </tr>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "templateScope": "local",
+        "x": 1008.3333333333331,
+        "y": 421.66666666666663,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd0ceb10.0461d8",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "func": "var v1 = parseFloat(msg.payload.time);\nvar newMsg = {topic:\"SELECT * FROM nodered \" + \n\"WHERE time = \" + v1 +  \n\" ORDER BY id DESC LIMIT 60\",\npayload: v1};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 401.66666666666663,
+        "y": 556.6666666666666,
+        "wires": [
+            [
+                "8bb4cfde.2932e"
+            ]
+        ]
+    },
+    {
+        "id": "c348d16e.9ae9c",
+        "type": "ui_chart",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "group": "8de0d34.ead8d3",
+        "order": 0,
+        "width": "6",
+        "height": "10",
+        "label": "Voltages",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-1",
+        "ymax": "11",
+        "removeOlder": "3",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#ff0000",
+            "#0000ff",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 799,
+        "y": 699,
+        "wires": [
+            [],
+            []
+        ]
+    }
+]
