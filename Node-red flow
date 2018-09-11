@@ -1,5 +1,5 @@
 In the node red window (IP address:1880), menu, import, from clipboard.
-Copy the following code: 
+Copy the following code, and deploy the flow: 
 
 [
     {
