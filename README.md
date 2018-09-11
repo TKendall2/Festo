@@ -11,6 +11,6 @@ the SIMATIC IOT2000 IO shield - https://uk.rs-online.com/web/p/plc-i-o-modules/1
 
 A 32gb microsd card is required to run the IOT2020 device
 
-Instructions on hardware and installing pre-requisite software is found in - 
+Instructions on hardware and installing pre-requisite software is found in ----> pre-requistes and setup
 
-Instructions on the node-red flow programming code is found in - 
+Instructions on the node-red flow programming code is found in ----> node-red flow
