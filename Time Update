@@ -1,0 +1,9 @@
+INSTRUCTION FOR TIME RESET AFTER LOSS OF POWER
+
+Open a new putty session with the module (IP address)
+In the command line use the commands:
+
+1. date MMDDhhmmYYYY                       (date is UTC time)
+2. hwclock --systohc --utc                  (sets hw clock to sw clock in UTC)
+
+Exit the putty session, the time should be updated
