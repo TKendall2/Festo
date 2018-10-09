@@ -1,11 +1,13 @@
-In the node red window (IP address:1880), menu, import, from clipboard.
-Copy the following code, and deploy the flow: 
-
 [
     {
         "id": "2c81bf72.601ce",
         "type": "tab",
         "label": "Flow 1"
+    },
+    {
+        "id": "a4c73a56.04f618",
+        "type": "tab",
+        "label": "Flow 2"
     },
     {
         "id": "5ab7da54.397714",
@@ -288,7 +290,7 @@ Copy the following code, and deploy the flow:
         "type": "debug",
         "z": "2c81bf72.601ce",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "true",
         "x": 1154,
@@ -301,12 +303,12 @@ Copy the following code, and deploy the flow:
         "z": "2c81bf72.601ce",
         "name": "",
         "topic": "",
-        "payload": "8",
-        "payloadType": "num",
+        "payload": "",
+        "payloadType": "date",
         "repeat": "0.5",
         "crontab": "",
         "once": true,
-        "x": 127,
+        "x": 147,
         "y": 732,
         "wires": [
             [
@@ -319,7 +321,7 @@ Copy the following code, and deploy the flow:
         "type": "function",
         "z": "2c81bf72.601ce",
         "name": "msg2 global",
-        "func": "var v2 = (msg.payload*10/854);\nv2 = Number(v2.toFixed(2));\nvar msg2 = {topic: \"Voltage 2\", payload:v2};\nglobal.set('msg2', msg2.payload);\nreturn msg2;",
+        "func": "var v2 = (msg.payload*10/854);\nv2 = Number(v2.toFixed(2));\nvar msg2 = {topic: \"Voltage 2\", payload:v2, timestamp: Date.now()};\nglobal.set('msg2', msg2.payload);\nreturn msg2;",
         "outputs": 1,
         "noerr": 0,
         "x": 540.3332977294922,
@@ -327,7 +329,7 @@ Copy the following code, and deploy the flow:
         "wires": [
             [
                 "a937b463.5d5468",
-                "c348d16e.9ae9c"
+                "e8d845fc.194cc8"
             ]
         ]
     },
@@ -337,12 +339,12 @@ Copy the following code, and deploy the flow:
         "z": "2c81bf72.601ce",
         "name": "",
         "topic": "",
-        "payload": "2.5",
-        "payloadType": "num",
+        "payload": "",
+        "payloadType": "date",
         "repeat": "0.5",
         "crontab": "",
         "once": true,
-        "x": 127,
+        "x": 147,
         "y": 653,
         "wires": [
             [
@@ -355,7 +357,7 @@ Copy the following code, and deploy the flow:
         "type": "function",
         "z": "2c81bf72.601ce",
         "name": "msg1 global",
-        "func": "var v1 = (msg.payload*10/856);\nv1 = Number(v1.toFixed(2));\nvar msg1 = {topic: \"Voltage 1\", payload:v1};\nglobal.set('msg1', msg1.payload);\nreturn msg1;",
+        "func": "var v1 = (msg.payload*10/856);\nv1 = Number(v1.toFixed(2));\nvar msg1 = {topic: \"Voltage 1\", payload:v1, timestamp: Date.now()};\nglobal.set('msg1', msg1.payload);\nreturn msg1;",
         "outputs": 1,
         "noerr": 0,
         "x": 540.809513092041,
@@ -363,7 +365,7 @@ Copy the following code, and deploy the flow:
         "wires": [
             [
                 "9c7f515a.d66ac",
-                "c348d16e.9ae9c"
+                "e8d845fc.194cc8"
             ]
         ]
     },
@@ -378,8 +380,8 @@ Copy the following code, and deploy the flow:
         "repeat": "1",
         "crontab": "",
         "once": true,
-        "x": 130,
-        "y": 346,
+        "x": 113,
+        "y": 336,
         "wires": [
             [
                 "2fa79074.d41a3"
@@ -446,8 +448,8 @@ Copy the following code, and deploy the flow:
         "repeat": "60",
         "crontab": "",
         "once": true,
-        "x": 129,
-        "y": 392,
+        "x": 118,
+        "y": 393,
         "wires": [
             [
                 "72a97bae.e3f884"
@@ -462,8 +464,8 @@ Copy the following code, and deploy the flow:
         "func": "var newMsg = {\n    \"topic\": \"DELETE FROM nodered WHERE id <=\" + (msg.payload-86400000)  \n    };\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 531.0000228881836,
-        "y": 380.3333492279053,
+        "x": 506.4285888671875,
+        "y": 395.1904754638672,
         "wires": [
             [
                 "bef099b9.fa2fb8"
@@ -504,8 +506,8 @@ Copy the following code, and deploy the flow:
         "payload": "",
         "payloadType": "date",
         "topic": "SELECT * FROM nodered ORDER BY id DESC LIMIT 100;",
-        "x": 445.27783966064453,
-        "y": 473.8889636993408,
+        "x": 398.27783203125,
+        "y": 466.88897705078125,
         "wires": [
             [
                 "8bb4cfde.2932e"
@@ -632,9 +634,9 @@ Copy the following code, and deploy the flow:
         "topic": "",
         "input": "",
         "inputType": "msg",
-        "inTz": "Etc/UTC",
-        "adjAmount": 0,
-        "adjType": "days",
+        "inTz": "ETC/GMT",
+        "adjAmount": "0",
+        "adjType": "hours",
         "adjDir": "add",
         "format": "object",
         "locale": "POSIX",
@@ -685,14 +687,14 @@ Copy the following code, and deploy the flow:
         ]
     },
     {
-        "id": "c348d16e.9ae9c",
+        "id": "e8d845fc.194cc8",
         "type": "ui_chart",
         "z": "2c81bf72.601ce",
         "name": "",
         "group": "8de0d34.ead8d3",
-        "order": 0,
+        "order": 1,
         "width": "6",
-        "height": "10",
+        "height": "9",
         "label": "Voltages",
         "chartType": "line",
         "legend": "true",
@@ -708,8 +710,8 @@ Copy the following code, and deploy the flow:
         "cutout": 0,
         "useOneColor": false,
         "colors": [
+            "#1f77b4",
             "#ff0000",
-            "#0000ff",
             "#ff7f0e",
             "#2ca02c",
             "#98df8a",
@@ -719,11 +721,99 @@ Copy the following code, and deploy the flow:
             "#c5b0d5"
         ],
         "useOldStyle": false,
-        "x": 799,
-        "y": 699,
+        "x": 800,
+        "y": 697,
         "wires": [
             [],
             []
         ]
+    },
+    {
+        "id": "bc9ce5d.781d018",
+        "type": "ui_button",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "group": "8de0d34.ead8d3",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "Clear chart",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "",
+        "x": 450,
+        "y": 694,
+        "wires": [
+            [
+                "1e47794e.80b927"
+            ]
+        ]
+    },
+    {
+        "id": "1e47794e.80b927",
+        "type": "function",
+        "z": "2c81bf72.601ce",
+        "name": "",
+        "func": "msg.payload = []\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 589,
+        "y": 693,
+        "wires": [
+            [
+                "e8d845fc.194cc8"
+            ]
+        ]
+    },
+    {
+        "id": "505512f8.2e109c",
+        "type": "inject",
+        "z": "a4c73a56.04f618",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "x": 163,
+        "y": 287,
+        "wires": [
+            [
+                "a7f34aa3.9c3448"
+            ]
+        ]
+    },
+    {
+        "id": "a7f34aa3.9c3448",
+        "type": "function",
+        "z": "a4c73a56.04f618",
+        "name": "",
+        "func": "msg.payload=7+(Math.random()*0.1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 377,
+        "y": 291,
+        "wires": [
+            [
+                "3ab4bd49.037ad2"
+            ]
+        ]
+    },
+    {
+        "id": "3ab4bd49.037ad2",
+        "type": "debug",
+        "z": "a4c73a56.04f618",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 621,
+        "y": 292,
+        "wires": []
     }
 ]
